@@ -8,17 +8,20 @@ import { CompanyType, PrimaryNavKey } from '@/types/navigation'
 const companies: { key: CompanyType; name: string; color: string }[] = [
   { key: 'interior', name: 'Interior Co.', color: 'from-[#8053FF] to-[#4D7CFF]' },
   { key: 'travel', name: 'Voyage Co.', color: 'from-[#FF8A5C] to-[#FF5E7B]' },
-  { key: 'ecommerce', name: 'Mercato', color: 'from-[#22D3EE] to-[#0EA5E9]' },
 ]
 
 const createLabels: Record<PrimaryNavKey, string> = {
-  home: 'Create Note',
+  dashboard: 'Create Note',
   crm: 'New Lead',
-  work: 'New Task',
+  projects: 'New Project',
+  travelOps: 'New Booking',
   inventory: 'New SKU',
   finance: 'New Invoice',
   people: 'Add Employee',
-  settings: 'Create Workflow',
+  tasks: 'New Task',
+  marketing: 'New Campaign',
+  support: 'New Ticket',
+  admin: 'New Setting',
 }
 
 interface TopBarProps {

@@ -1,5 +1,16 @@
-export type CompanyType = 'interior' | 'travel' | 'ecommerce'
-export type PrimaryNavKey = 'home' | 'crm' | 'work' | 'inventory' | 'finance' | 'people' | 'settings'
+export type CompanyType = 'interior' | 'travel'
+export type PrimaryNavKey =
+  | 'dashboard'
+  | 'crm'
+  | 'projects'
+  | 'travelOps'
+  | 'inventory'
+  | 'finance'
+  | 'people'
+  | 'tasks'
+  | 'marketing'
+  | 'support'
+  | 'admin'
 export type Role = 'admin' | 'manager' | 'staff' | 'viewer'
 
 export type NavItem = {

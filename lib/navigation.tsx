@@ -1,90 +1,87 @@
 import React from 'react'
-import { IconBox, IconHome, IconLayers, IconLock, IconSettings, IconSparkle, IconUsers, IconWallet } from '@/components/icons'
+import { IconBell, IconBox, IconHome, IconLayers, IconSettings, IconSparkle, IconTab, IconUsers, IconWallet } from '@/components/icons'
 import { CompanyType, ContextMenuMap, NavItem, PrimaryNavItem, PrimaryNavKey, Role } from '@/types/navigation'
 
 export const PRIMARY_NAV: PrimaryNavItem[] = [
-  { key: 'home', label: 'Home', icon: <IconHome /> },
-  { key: 'crm', label: 'CRM', icon: <IconSparkle /> },
-  { key: 'work', label: 'Work', icon: <IconLayers /> },
+  { key: 'dashboard', label: 'Dashboard', icon: <IconHome /> },
+  { key: 'crm', label: 'CRM & Sales', icon: <IconSparkle /> },
+  { key: 'projects', label: 'Projects', icon: <IconLayers /> },
+  { key: 'travelOps', label: 'Travel Ops', icon: <IconBox /> },
   { key: 'inventory', label: 'Inventory', icon: <IconBox /> },
   { key: 'finance', label: 'Finance', icon: <IconWallet /> },
-  { key: 'people', label: 'People', icon: <IconUsers /> },
-  { key: 'settings', label: 'Settings', icon: <IconSettings />, roles: ['admin', 'manager'] },
+  { key: 'people', label: 'HR & People', icon: <IconUsers /> },
+  { key: 'tasks', label: 'Task Mgmt', icon: <IconTab /> },
+  { key: 'marketing', label: 'Marketing', icon: <IconSparkle /> },
+  { key: 'support', label: 'Support', icon: <IconBell /> },
+  { key: 'admin', label: 'Admin', icon: <IconSettings />, roles: ['admin', 'manager'] },
 ]
 
-const sharedWork: Record<CompanyType, NavItem[]> = {
+const projectsMenus: Record<CompanyType, NavItem[]> = {
   interior: [
     { key: 'projects', label: 'Projects' },
-    { key: 'tasks', label: 'Tasks Board' },
     { key: 'boq', label: 'BOQ / Estimation' },
     { key: 'site', label: 'Site Visits' },
-    { key: 'vendors', label: 'Vendors' },
-    { key: 'files', label: 'Files' },
-    { key: 'timeline', label: 'Timeline' },
-    { key: 'reports', label: 'Reports' },
+    { key: 'files', label: 'Project Files' },
+    { key: 'vendors', label: 'Project Vendors' },
+    { key: 'reports', label: 'Project Reports' },
   ],
+  travel: [],
+}
+
+const travelOpsMenus: Record<CompanyType, NavItem[]> = {
   travel: [
     { key: 'bookings', label: 'Bookings' },
-    { key: 'packages', label: 'Packages' },
-    { key: 'agents', label: 'Agents' },
     { key: 'tickets', label: 'Tickets' },
-    { key: 'visa', label: 'Visa Processing' },
-    { key: 'clients', label: 'Clients' },
-    { key: 'reports', label: 'Reports' },
+    { key: 'ticketPurchases', label: 'Ticket Purchases' },
+    { key: 'visa', label: 'Passport / Visa' },
+    { key: 'agents', label: 'Agents' },
+    { key: 'portals', label: 'Portals' },
+    { key: 'reports', label: 'Travel Reports' },
   ],
-  ecommerce: [
-    { key: 'orders', label: 'Orders' },
-    { key: 'products', label: 'Products' },
-    { key: 'customers', label: 'Customers' },
-    { key: 'coupons', label: 'Coupons' },
-    { key: 'returns', label: 'Returns' },
-    { key: 'reports', label: 'Reports' },
-  ],
+  interior: [],
 }
 
 export const CONTEXT_MENU: ContextMenuMap = {
-  home: {
+  dashboard: {
     shared: [
-      { key: 'dashboard', label: 'Dashboard' },
-      { key: 'tasks', label: 'My Tasks', badge: '12' },
-      { key: 'approvals', label: 'My Approvals' },
-      { key: 'recent', label: 'Recent' },
+      { key: 'overview', label: 'Overview' },
       { key: 'calendar', label: 'Calendar' },
+      { key: 'notices', label: 'Notices' },
+      { key: 'notifications', label: 'Notifications' },
+      { key: 'branches', label: 'Branches' },
     ],
   },
   crm: {
     shared: [
       { key: 'leads', label: 'Leads' },
+      { key: 'followups', label: 'Lead Followups' },
+      { key: 'pipeline', label: 'Pipeline / Deals' },
+      { key: 'proposals', label: 'Proposals / Estimates' },
+      { key: 'contracts', label: 'Contracts' },
       { key: 'clients', label: 'Clients' },
-      { key: 'pipeline', label: 'Pipeline' },
-      { key: 'quotations', label: 'Quotations' },
-      { key: 'activities', label: 'Activities' },
+      { key: 'sources', label: 'Lead Sources' },
       { key: 'reports', label: 'Reports' },
     ],
   },
-  work: {
-    interior: sharedWork.interior,
-    travel: sharedWork.travel,
-    ecommerce: sharedWork.ecommerce,
+  projects: {
+    interior: projectsMenus.interior,
+    travel: projectsMenus.travel,
+  },
+  travelOps: {
+    interior: travelOpsMenus.interior,
+    travel: travelOpsMenus.travel,
   },
   inventory: {
-    interior: [
-      { key: 'products', label: 'Products / Materials' },
-      { key: 'categories', label: 'Categories' },
+    shared: [
+      { key: 'products', label: 'Products' },
+      { key: 'catalog', label: 'Categories / Brand / Unit' },
       { key: 'stock', label: 'Stock' },
-      { key: 'po', label: 'Purchase Orders' },
-      { key: 'vendors', label: 'Vendors' },
-      { key: 'warehouses', label: 'Warehouses' },
-      { key: 'low', label: 'Low Stock', badge: '3' },
-    ],
-    ecommerce: [
-      { key: 'products', label: 'Products / Materials' },
-      { key: 'categories', label: 'Categories' },
-      { key: 'stock', label: 'Stock' },
-      { key: 'po', label: 'Purchase Orders' },
-      { key: 'vendors', label: 'Vendors' },
-      { key: 'warehouses', label: 'Warehouses' },
-      { key: 'low', label: 'Low Stock', badge: '3' },
+      { key: 'purchases', label: 'Purchases' },
+      { key: 'sales', label: 'Sales' },
+      { key: 'transfers', label: 'Transfers' },
+      { key: 'adjustments', label: 'Adjustments' },
+      { key: 'returns', label: 'Returns' },
+      { key: 'suppliers', label: 'Suppliers' },
     ],
   },
   finance: {
@@ -93,10 +90,10 @@ export const CONTEXT_MENU: ContextMenuMap = {
       { key: 'bills', label: 'Bills' },
       { key: 'expenses', label: 'Expenses' },
       { key: 'payments', label: 'Payments' },
-      { key: 'ledger', label: 'Ledger' },
-      { key: 'bank', label: 'Bank/Cash' },
-      { key: 'payroll', label: 'Payroll Summary' },
-      { key: 'reports', label: 'Reports' },
+      { key: 'banks', label: 'Banks' },
+      { key: 'bankTransfers', label: 'Bank Transfers' },
+      { key: 'ledger', label: 'Ledger / Journals' },
+      { key: 'reports', label: 'Financial Reports' },
     ],
   },
   people: {
@@ -105,18 +102,45 @@ export const CONTEXT_MENU: ContextMenuMap = {
       { key: 'attendance', label: 'Attendance' },
       { key: 'leaves', label: 'Leaves' },
       { key: 'payroll', label: 'Payroll' },
-      { key: 'departments', label: 'Departments' },
+      { key: 'org', label: 'Departments / Designation / Shift' },
       { key: 'assets', label: 'Assets' },
-      { key: 'performance', label: 'Performance' },
+      { key: 'resignations', label: 'Resignations' },
+      { key: 'promotions', label: 'Promotions' },
+      { key: 'users', label: 'User Accounts' },
+      { key: 'roles', label: 'Roles / Permissions' },
     ],
   },
-  settings: {
+  tasks: {
     shared: [
-      { key: 'company', label: 'Company Settings', roles: ['admin'] },
-      { key: 'users', label: 'Users & Roles', roles: ['admin', 'manager'] },
-      { key: 'workflow', label: 'Workflow Automation', roles: ['admin', 'manager'] },
-      { key: 'tax', label: 'Tax/VAT', roles: ['admin', 'manager'] },
-      { key: 'templates', label: 'Templates', roles: ['admin', 'manager'] },
+      { key: 'taskboard', label: 'Task Board' },
+      { key: 'workspaces', label: 'Workspaces' },
+      { key: 'boards', label: 'Boards' },
+      { key: 'columns', label: 'Columns' },
+      { key: 'labels', label: 'Labels' },
+    ],
+  },
+  marketing: {
+    shared: [
+      { key: 'email', label: 'Email Marketing' },
+      { key: 'sms', label: 'SMS Marketing' },
+      { key: 'whatsapp', label: 'WhatsApp Marketing' },
+      { key: 'templates', label: 'Templates' },
+    ],
+  },
+  support: {
+    shared: [
+      { key: 'departments', label: 'Support Departments' },
+      { key: 'tickets', label: 'Support Tickets' },
+    ],
+  },
+  admin: {
+    shared: [
+      { key: 'company', label: 'Company Settings', roles: ['admin', 'manager'] },
+      { key: 'invoice', label: 'Invoice Settings', roles: ['admin', 'manager'] },
+      { key: 'devices', label: 'Device Settings', roles: ['admin', 'manager'] },
+      { key: 'geography', label: 'Geography (Country, State, Airport)', roles: ['admin', 'manager'] },
+      { key: 'portals', label: 'Portal Settings', roles: ['admin', 'manager'] },
+      { key: 'logs', label: 'System Logs', roles: ['admin', 'manager'] },
     ],
   },
 }

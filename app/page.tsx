@@ -30,7 +30,6 @@ export default function Page() {
           >
             <option value="interior">Interior</option>
             <option value="travel">Travel</option>
-            <option value="ecommerce">Ecommerce</option>
           </select>
           <select
             value={role}

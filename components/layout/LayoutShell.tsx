@@ -5,6 +5,7 @@ import { ContextSidebar } from '@/components/layout/ContextSidebar'
 import { PrimarySidebar } from '@/components/layout/PrimarySidebar'
 import { TopBar } from '@/components/layout/TopBar'
 import { WorkspaceTabs } from '@/components/layout/WorkspaceTabs'
+import { PRIMARY_NAV } from '@/lib/navigation'
 import { usePersistentState } from '@/lib/usePersistentState'
 import { CompanyType, NavItem, PrimaryNavKey, Role } from '@/types/navigation'
 
@@ -25,11 +26,12 @@ export function LayoutShell({
   primaryOverride,
   onPrimaryChange,
 }: LayoutShellProps) {
-  const [primaryState, setPrimaryState] = usePersistentState<PrimaryNavKey>('nav:primary', 'home')
+  const [primaryState, setPrimaryState] = usePersistentState<PrimaryNavKey>('nav:primary', 'dashboard')
   const [companyState, setCompanyState] = usePersistentState<CompanyType>('nav:company', 'interior')
   const [, setContextItem] = usePersistentState<NavItem | null>('nav:context-item', null)
 
-  const primary = primaryOverride ?? primaryState
+  const rawPrimary = primaryOverride ?? primaryState
+  const primary = PRIMARY_NAV.some((item) => item.key === rawPrimary) ? rawPrimary : 'overview'
   const company = companyOverride ?? companyState
 
   const handlePrimaryChange = (key: PrimaryNavKey) => {
