@@ -31,7 +31,7 @@ export function LayoutShell({
   const [, setContextItem] = usePersistentState<NavItem | null>('nav:context-item', null)
 
   const rawPrimary = primaryOverride ?? primaryState
-  const primary = PRIMARY_NAV.some((item) => item.key === rawPrimary) ? rawPrimary : 'overview'
+  const primary: PrimaryNavKey = PRIMARY_NAV.some((item) => item.key === rawPrimary) ? rawPrimary : 'dashboard'
   const company = companyOverride ?? companyState
 
   const handlePrimaryChange = (key: PrimaryNavKey) => {
