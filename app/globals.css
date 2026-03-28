@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@500;600&family=DM+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f6f7fb;
+  --panel: #ffffff;
+  --border: #e7ebf3;
+  --muted: #6b7280;
+  --accent: #6b7bff;
+  --accent-strong: #3d47c3;
+  --accent-soft: #e6edff;
+  --success: #37b26c;
+}
+
+* {
+  @apply antialiased;
+}
+
+body {
+  background: radial-gradient(120% 120% at 20% 20%, rgba(107, 123, 255, 0.12), transparent 45%),
+    radial-gradient(90% 90% at 80% 0%, rgba(55, 86, 210, 0.16), transparent 40%),
+    var(--bg);
+  color: #0f172a;
+  font-family: theme('fontFamily.body');
+}
+
+.glass-panel {
+  background: color-mix(in srgb, var(--panel) 80%, #f3f4f8 20%);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px -28px rgba(12, 19, 56, 0.25), 0 1px 0 rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.nav-pill {
+  @apply px-3 py-2 rounded-lg transition-colors;
+}
+
+.nav-pill-active {
+  @apply bg-accent-600 text-white shadow-soft;
+}
+
+.badge-soft {
+  @apply px-2 py-0.5 text-xs rounded-full bg-accent-100 text-accent-700 font-semibold;
+}
+
+.card-shadow {
+  box-shadow: 0 14px 50px -30px rgba(15, 23, 42, 0.35);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d5dbeb;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
