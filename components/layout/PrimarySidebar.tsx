@@ -75,13 +75,7 @@ export function PrimarySidebar({ active, onChange, role, isMobileOpen, onCloseMo
         })}
       </nav>
 
-      <div className={`mt-4 flex-shrink-0 rounded-2xl bg-gradient-to-br from-accent-50 to-white p-3 ${collapsed ? 'hidden' : 'block'}`}>
-        <p className="text-xs uppercase tracking-[0.1em] text-neutral-400">Status</p>
-        <div className="mt-2 flex items-center justify-between text-sm font-semibold text-neutral-700">
-          <span>Available seats</span>
-          <span className="badge-soft">3</span>
-        </div>
-      </div>
+
     </aside>
   )
 }
