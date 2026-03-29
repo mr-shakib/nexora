@@ -17,12 +17,12 @@ export default function Page() {
       companyOverride={company}
       onCompanyChange={setCompany}
     >
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <p className="text-xs uppercase tracking-[0.1em] text-neutral-400">Sandbox</p>
-          <h1 className="text-2xl font-semibold text-neutral-800">Multi-company layout</h1>
+          <h1 className="text-2xl lg:text-3xl font-semibold text-neutral-800 tracking-tight">Multi-company layout</h1>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <select
             value={company}
             onChange={(e) => setCompany(e.target.value as CompanyType)}
